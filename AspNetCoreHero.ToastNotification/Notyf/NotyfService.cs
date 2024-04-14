@@ -13,7 +13,7 @@ namespace AspNetCoreHero.ToastNotification.Notyf
         {
             MessageContainer = messageContainerFactory.Create<Models.NotyfNotification>();
         }
-        public void Custom(string message, int? durationInSeconds = null, string backgroundColor = "black", string iconClassName = "home")
+        public virtual void Custom(string message, int? durationInSeconds = null, string backgroundColor = "black", string iconClassName = "home")
         {
             var toastMessage = new Models.NotyfNotification(ToastNotificationType.Custom, message, durationInSeconds);
             toastMessage.Icon = iconClassName;
@@ -21,40 +21,40 @@ namespace AspNetCoreHero.ToastNotification.Notyf
             MessageContainer.Add(toastMessage);
         }
 
-        public void Error(string message, int? durationInSeconds = null)
+        public virtual void Error(string message, int? durationInSeconds = null)
         {
             var toastMessage = new Models.NotyfNotification(ToastNotificationType.Error, message, durationInSeconds);
             MessageContainer.Add(toastMessage);
         }
 
-        public IEnumerable<Models.NotyfNotification> GetNotifications()
+        public virtual IEnumerable<Models.NotyfNotification> GetNotifications()
         {
             return MessageContainer.GetAll();
         }
 
-        public void Information(string message, int? durationInSeconds = null)
+        public virtual void Information(string message, int? durationInSeconds = null)
         {
             var toastMessage = new Models.NotyfNotification(ToastNotificationType.Information, message, durationInSeconds);
             MessageContainer.Add(toastMessage);
         }
 
-        public IEnumerable<Models.NotyfNotification> ReadAllNotifications()
+        public virtual IEnumerable<Models.NotyfNotification> ReadAllNotifications()
         {
             return MessageContainer.ReadAll();
         }
 
-        public void RemoveAll()
+        public virtual void RemoveAll()
         {
             MessageContainer.RemoveAll();
         }
 
-        public void Success(string message, int? durationInSeconds = null)
+        public virtual void Success(string message, int? durationInSeconds = null)
         {
             var toastMessage = new Models.NotyfNotification(ToastNotificationType.Success, message, durationInSeconds);
             MessageContainer.Add(toastMessage);
         }
 
-        public void Warning(string message, int? durationInSeconds = null)
+        public virtual void Warning(string message, int? durationInSeconds = null)
         {
             var toastMessage = new Models.NotyfNotification(ToastNotificationType.Warning, message, durationInSeconds);
             MessageContainer.Add(toastMessage);
